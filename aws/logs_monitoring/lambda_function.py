@@ -249,7 +249,7 @@ def add_metadata_to_lambda_log(event):
         f"service:{function_name}",
     )
     tags.append(service_tag)
-    event[DD_SERVICE] = service_tag.split(":")[1]
+    event[DD_SERVICE] = service_tag[len("service:"):]
 
     # Check if one of the Lambda's custom tags is env
     # If an env tag exists, remove the env:none placeholder
